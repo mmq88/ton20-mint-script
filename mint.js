@@ -38,7 +38,7 @@ const configs = JSON.parse(data);
         txPack.push(internal({
             to: configs.toAddr,
             value: "0",
-            body: `data:application/json,{"p":"ton-20","op":"mint","tick":"${configs.ticker}","amt":"100000000000"}`
+            body: `data:application/json,{"p":"ton-20","op":"mint","tick":"${configs.ticker}","amt":"1000000000"}`
         }))
     }
  
@@ -67,6 +67,7 @@ const configs = JSON.parse(data);
 
         } catch (e) {
             console.log(`${i + 1}: Rejected due to server overload or settings are incorrect.`);
+            console.log(e);
             console.log("Try again...");
             retryCount++;
         }
