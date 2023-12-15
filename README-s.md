@@ -3,9 +3,7 @@
 <p align="left">
 <a href="./README.md"><img alt="English" src="https://img.shields.io/badge/English-%238193b3?style=for-the-badge"></a>&thinsp;
 <a href="./README-t.md"><img alt="繁體中文" src="https://img.shields.io/badge/繁體中文-%238193b3?style=for-the-badge"></a>&thinsp;
-<a href="./README-s.md"><img alt="简体
-中文" src="https://img.shields.io/badge/简体
-中文-%238193b3?style=for-the-badge"></a>
+<a href="./README-s.md"><img alt="简体中文" src="https://img.shields.io/badge/简体中文-%238193b3?style=for-the-badge"></a>
 </p>
 
 > 感谢原仓库作者: [zfy666ci](https://github.com/zfy666ci/ton-mint)
