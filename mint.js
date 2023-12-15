@@ -63,11 +63,10 @@ const configs = JSON.parse(data);
 
             console.log(`${i + 1}: Successed`);
             i++;
-            retryCount = 0;
+            retryCount = 1;
 
         } catch (e) {
             console.log(`${i + 1}: Rejected due to server overload or settings are incorrect(Confirm that each arg is correct).`);
-            console.log(e);
             console.log("Try again...");
             retryCount++;
         }
