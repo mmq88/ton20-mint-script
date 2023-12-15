@@ -1,20 +1,76 @@
-# ton-mint
+# ton20-mint-script
 
+<p align="left">
+<a href="./README.md"><img alt="English" src="https://img.shields.io/badge/English-%238193b3?style=for-the-badge"></a>&thinsp;
+<a href="./README-t.md"><img alt="繁體中文" src="https://img.shields.io/badge/繁體中文-%238193b3?style=for-the-badge"></a>&thinsp;
+<a href="./README-s.md"><img alt="简体
+中文" src="https://img.shields.io/badge/简体
+中文-%238193b3?style=for-the-badge"></a>
+</p>
 
-以下是在 Node.js 环境下部署和铸造代币的步骤：
+> Thanks to the original repository author: [zfy666ci](https://github.com/zfy666ci/ton-mint)
 
-1. **安装 Node.js 环境**
-   访问 [Node.js 官网](https://nodejs.org/en) 并下载安装适合你操作系统的 Node.js 版本。
+This is the Docker version of the ton20 minting script, making it more convenient for users to utilize. This version includes features ensuring the limit on minting attempts and retries, to avoid unnecessary attempts after reaching the minting limit.
 
-2. **克隆仓库**
-   打开命令行工具并执行以下命令以克隆仓库：
-   git clone https://github.com/zfy666ci/ton-mint.git
-3. **安装依赖**
-   进入克隆的仓库目录，然后运行以下命令安装必要的依赖：
-   cd ton-mint
-   npm install  @ton/ton @ton/crypto @ton/core buffer
+## Setup
 
-4. **配置并运行脚本**
-   打开 `index.js` 文件，并设置你的 助记词。
-   完成配置后，在命令行中运行以下命令来执行脚本：
-   node index.js
+Fill in your details in configs.json (the RPC endpoint usually doesn't need to be changed):
+
+```json
+{
+  "rpcEndPoint": "https://ton.access.orbs.network/44A2c0ff5Bd3F8B62C092Ab4D238bEE463E644A2/1/mainnet/toncenter-api-v2/jsonRPC",
+  "mnemonic": "mnemonic phrases (separate each word with a space)",
+  "toAddr": "the address you want to send to",
+  "number": 1, // the number of tokens you want to mint
+  "ticker": "name of the inscription (ex:nano)",
+  "retryCount": 10
+  // the number of times you want to retry. This parameter is used to stop constant attempts when the server is
+  // overloaded and transactions are rejected, to avoid wasting too much gas.
+}
+```
+
+## Windows
+
+1. Install [docker desktop](https://www.docker.com/products/docker-desktop/)。
+2. Execute `run.bat`。
+
+※Whenever you need to change the target, modify settings, or run another round, simply make the necessary changes to the settings (if you wish) and then execute `run.bat` again.
+
+## MacOS
+
+1. Install [docker desktop](https://www.docker.com/products/docker-desktop/) or use the following command.
+
+```sh
+brew install --cask docker
+```
+
+2. Execute `run.sh`。
+
+※Whenever you need to change the target, modify settings, or run another round, simply make the necessary changes to the settings (if you wish) and then execute `run.sh` again.
+
+## Ubuntu/Debian
+
+1. Install [docker desktop](https://www.docker.com/products/docker-desktop/) or use the following command.
+
+```sh
+sudo apt-get update && \
+sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common && \
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - && \
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" && \
+sudo apt-get update && \
+sudo apt-get install -y docker-ce
+
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.23.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
+Verify installation:
+
+```sh
+docker -v
+docker-compose -v
+```
+
+2. Execute `run.sh`。
+
+※Whenever you need to change the target, modify settings, or run another round, simply make the necessary changes to the settings (if you wish) and then execute `run.sh` again.
