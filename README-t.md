@@ -14,14 +14,16 @@
 ## 設置
 
 在 `configs.json` 中，填入你的資訊（RPC 端點基本上不用動）：
+※注意 amount 需要是對方認可的數量，否則交易可能會無效。可以透過手動交易查看 json 資料中實際的 amount（amt）並填入 `configs.json` 的 `"amount"` 欄位。(EX：data:application/json,{"p":"ton-20","op":"mint","tick":"bolt20","amt":"100000000000"}，amount="100000000000")
 
 ```json
 {
   "rpcEndPoint": "https://ton.access.orbs.network/44A2c0ff5Bd3F8B62C092Ab4D238bEE463E644A2/1/mainnet/toncenter-api-v2/jsonRPC",
-  "mnemonic": "註記詞 (每個單字間用空格分開)",
-  "toAddr": "你要發送的地址",
-  "number": 1, // 你要鑄造的數量
-  "ticker": "銘文的名稱 (ex:nano)",
+  "mnemonic": "Your mnemonic (use space to separate words)",
+  "toAddr": "Your address",
+  "round": 1,
+  "ticker": "your target ticker",
+  "amount": "1000000000",
   "retryCount": 10 // 你要重複嘗試的次數。當伺服器過載時，交易會被拒絕，此參數用於結束不斷的嘗試避免浪費太多 gas。
 }
 ```

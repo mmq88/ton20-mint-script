@@ -2,7 +2,8 @@
     "rpcEndPoint": "https://ton.access.orbs.network/44A2c0ff5Bd3F8B62C092Ab4D238bEE463E644A2/1/mainnet/toncenter-api-v2/jsonRPC",
     "mnemonic": "Your mnemonic (use space to separate words)",
     "toAddr": "Your address",
-    "number": 1,
+    "round": 1,
     "ticker": "your target ticker",
+    "amount": "1000000000",
     "retryCount": 10
 }

@@ -13,14 +13,16 @@ This is the Docker version of the ton20 minting script, making it more convenien
 ## Setup
 
 Fill in your details in configs.json (the RPC endpoint usually doesn't need to be changed):
+※Note that the amount needs to be one that the recipient recognizes, otherwise the transaction might be invalid. You can manually check the actual amount (amt) in the JSON data during a transaction and fill it into the `"amount"` field in `configs.json`. (Example: data:application/json,{"p":"ton-20","op":"mint","tick":"bolt20","amt":"100000000000"}, amount="100000000000")
 
 ```json
 {
   "rpcEndPoint": "https://ton.access.orbs.network/44A2c0ff5Bd3F8B62C092Ab4D238bEE463E644A2/1/mainnet/toncenter-api-v2/jsonRPC",
-  "mnemonic": "mnemonic phrases (separate each word with a space)",
-  "toAddr": "the address you want to send to",
-  "number": 1, // the number of tokens you want to mint
-  "ticker": "name of the inscription (ex:nano)",
+  "mnemonic": "Your mnemonic (use space to separate words)",
+  "toAddr": "Your address",
+  "round": 1,
+  "ticker": "your target ticker",
+  "amount": "1000000000",
   "retryCount": 10
   // the number of times you want to retry. This parameter is used to stop constant attempts when the server is
   // overloaded and transactions are rejected, to avoid wasting too much gas.

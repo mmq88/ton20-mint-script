@@ -1,18 +1,19 @@
 const { TonClient, WalletContractV4, internal } = require("@ton/ton");
 const { mnemonicToPrivateKey } = require("@ton/crypto");
+
 const fs = require('fs');
 
 const data = fs.readFileSync("./configs.json", "utf8");
 const configs = JSON.parse(data);
 
 (async function run() {
-    if (!configs.rpcEndPoint && !configs.mnemonic && !configs.toAddr && !configs.num && !configs.ticker) {
+    if (!configs.rpcEndPoint && !configs.mnemonic && !configs.toAddr && !configs.round && !configs.ticker) {
         console.log("Make sure you have configs.json file with rpcEndPoint, mnemonic, toAddr, num and ticker fields.");
         return;
     }
 
-    if (configs.number <= 0) {
-        console.log("Number of transactions must be greater than 0.");
+    if (configs.round <= 0) {
+        console.log("Round of transactions must be greater than 0.");
         return;
     }
 
@@ -38,14 +39,14 @@ const configs = JSON.parse(data);
         txPack.push(internal({
             to: configs.toAddr,
             value: "0",
-            body: `data:application/json,{"p":"ton-20","op":"mint","tick":"${configs.ticker}","amt":"100000000000"}`
+            body: `data:application/json,{"p":"ton-20","op":"mint","tick":"${configs.ticker}","amt":"${configs.amount}"}`
         }))
     }
  
     // Send nth transactions.
     let retryCount = 1;
 
-    for (let i = 0; i < configs.number; ) {
+    for (let i = 0; i < configs.round; ) {
         if (retryCount >= configs.retryCount) {
             console.log("End script due to retry count exceeded.");
             return;
