@@ -1,0 +1,9 @@
+{
+    "rpcEndPoint": "https://ton.access.orbs.network/44A2c0ff5Bd3F8B62C092Ab4D238bEE463E644A2/1/mainnet/toncenter-api-v2/jsonRPC",
+    "mnemonic": "Your mnemonic (use space split words) 註記詞 (用空格分開)",
+    "toAddr": "Your address 你的地址",
+    "round": 10000,
+    "ticker": "dedust.io",
+    "amount": "1000000000",
+    "retryCount": 20
+}
