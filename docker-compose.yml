@@ -3,6 +3,4 @@ services:
   ton20-minter:
     build: .
     image: ton20-minter
-    volumes:
-      - .:/app
     restart: "no"
